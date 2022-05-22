@@ -1,0 +1,15 @@
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\bin\Debug\net6.0\Cadastro_Series.exe
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\bin\Debug\net6.0\Cadastro_Series.deps.json
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\bin\Debug\net6.0\Cadastro_Series.runtimeconfig.json
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\bin\Debug\net6.0\Cadastro_Series.dll
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\bin\Debug\net6.0\Cadastro_Series.pdb
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.csproj.AssemblyReference.cache
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.AssemblyInfoInputs.cache
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.AssemblyInfo.cs
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.dll
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\refint\Cadastro_Series.dll
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.pdb
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\Cadastro_Series.genruntimeconfig.cache
+C:\Users\Gabriel\Documents\Projetos DIO\C#\Cadastro_Series\obj\Debug\net6.0\ref\Cadastro_Series.dll
