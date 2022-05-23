@@ -40,7 +40,9 @@ void ListarSerie()
 
     if (lista.Count == 0)
     {
-        Console.WriteLine("Nenhume série cadastrada.");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\nNenhume série cadastrada.");
+        Console.ResetColor();
         return;
     }
 
@@ -260,7 +262,7 @@ int MenuOpcoes()
 {
     Console.WriteLine();
     Console.WriteLine("-----------| MENU |-----------");
-    Console.WriteLine("Insira um valor: ");
+    Console.WriteLine("Insira um valor: \n");
 
     Console.WriteLine("1- Listar séries");
     Console.WriteLine("2- Inserir nova série");
@@ -270,6 +272,17 @@ int MenuOpcoes()
     Console.WriteLine("6- Limpar tela");
     Console.WriteLine("7- Sair");
 
-    int opcaoUsuario = int.Parse(Console.ReadLine());
-    return opcaoUsuario;
+    try
+    {
+        int opcaoUsuario = int.Parse(Console.ReadLine());
+        return opcaoUsuario;
+    }
+    catch (FormatException)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\nValor inválido.\n");
+        Console.ResetColor();
+        return 0;
+    }
+
 }
