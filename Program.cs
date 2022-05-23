@@ -105,26 +105,62 @@ void AtualizarSerie()
 void ExcluirSerie()
 {
     Console.WriteLine("--------| EXCLUIR SÉRIE |--------");
-
-    Console.WriteLine("\nDigite o ID da série: ");
-    int entradaId = int.Parse(Console.ReadLine());
-
-    repositorio.Excluir(entradaId);
-}
-void VisualizarSerie()
-{
-    Console.WriteLine("--------| VISUALIZAR SÉRIE |--------");
-    bool isLopping = true;
+    Console.WriteLine("\nDigite 'x' para sair.\n");
+    bool isLoopingE = true;
 
     do
     {
         try
         {
-            Console.WriteLine("\nDigite 'x' para sair.\n");
+            Console.Write("\nDigite o ID da série: ");
+            string entradaId = Console.ReadLine();
+            if (entradaId == "x") { isLoopingE = false; return; }
+
+            repositorio.Excluir(int.Parse(entradaId));
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nSérie excluida.\n");
+            Console.ResetColor();
+
+            isLoopingE = false;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nSérie não encontrada.\n");
+            Console.ResetColor();
+        }
+        catch (FormatException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nID inválido.\n");
+            Console.ResetColor();
+        }
+        catch (Exception e)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(e);
+            Console.ResetColor();
+        }
+
+    } while (isLoopingE);
+
+
+}
+void VisualizarSerie()
+{
+    Console.WriteLine("--------| VISUALIZAR SÉRIE |--------");
+    bool isLoopingVS = true;
+    Console.WriteLine("\nDigite 'x' para sair.\n");
+
+    do
+    {
+        try
+        {
             Console.Write("\n\nDigite o ID da série: ");
 
             string entradaId = Console.ReadLine();
-            if (entradaId == "x") { isLopping = false; return; }
+            if (entradaId == "x") { isLoopingVS = false; return; }
 
             string serie = repositorio.RetornarPorId(int.Parse(entradaId)).ToString();
 
@@ -134,7 +170,7 @@ void VisualizarSerie()
 
             Console.WriteLine(serie);
 
-            isLopping = false;
+            isLoopingVS = false;
 
         }
         catch (ArgumentOutOfRangeException)
@@ -155,7 +191,7 @@ void VisualizarSerie()
             Console.WriteLine(e);
             Console.ResetColor();
         }
-    } while (isLopping);
+    } while (isLoopingVS);
 
 
 
