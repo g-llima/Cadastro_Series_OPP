@@ -114,11 +114,53 @@ void ExcluirSerie()
 void VisualizarSerie()
 {
     Console.WriteLine("--------| VISUALIZAR SÉRIE |--------");
+    bool isLopping = true;
 
-    Console.WriteLine("\nDigite o ID da série: ");
-    int entradaId = int.Parse(Console.ReadLine());
+    do
+    {
+        try
+        {
+            Console.WriteLine("\nDigite 'x' para sair.\n");
+            Console.Write("\n\nDigite o ID da série: ");
 
-    Console.WriteLine(repositorio.RetornarPorId(entradaId).ToString());
+            string entradaId = Console.ReadLine();
+            if (entradaId == "x") { isLopping = false; return; }
+
+            string serie = repositorio.RetornarPorId(int.Parse(entradaId)).ToString();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nSérie encontrada !\n");
+            Console.ResetColor();
+
+            Console.WriteLine(serie);
+
+            isLopping = false;
+
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nSérie não encontrada.\n");
+            Console.ResetColor();
+        }
+        catch (FormatException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nID inválido.\n");
+            Console.ResetColor();
+        }
+        catch (Exception e)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(e);
+            Console.ResetColor();
+        }
+    } while (isLopping);
+
+
+
+
+
 }
 int MenuOpcoes()
 {

@@ -23,7 +23,7 @@ public class Serie : Entidade
 
     public override string ToString()
     {
-        return "Gênero: " + Genero + "\nTítulo: " + Titulo + "\nDescrição: " + Descricao + "\nAno de lançamento: " + Ano + "\nEcluido: " + Excluido;
+        return "Gênero: " + Genero + "\nTítulo: " + Titulo + "\nDescrição: " + Descricao + "\nAno de lançamento: " + Ano + "\nExcluido: " + Excluido;
     }
 
     public void Excluir()
