@@ -78,29 +78,58 @@ void InserirSerie()
 void AtualizarSerie()
 {
     Console.WriteLine("--------| ATUALIZAR SÉRIE |--------");
-
-    Console.WriteLine("\nDigite o ID da série: ");
-    int entradaId = int.Parse(Console.ReadLine());
-
-    foreach (int i in Enum.GetValues(typeof(Genero)))
+    Console.WriteLine("\nDigite 'x' para sair.\n");
+    bool isLoopingAS = true;
+    do
     {
-        Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Genero), i));
-    }
+        try
+        {
+            Console.Write("\nDigite o ID da série: ");
+            string entradaId = Console.ReadLine();
+            if (entradaId == "x") { isLoopingAS = false; return; }
 
-    Console.WriteLine("\nDigite o gênero entre as opções acima: ");
-    int entradaGenero = int.Parse(Console.ReadLine());
+            repositorio.RetornarPorId(int.Parse(entradaId));
 
-    Console.WriteLine("\nDigite o título da série: ");
-    string entradaTitulo = Console.ReadLine();
+            foreach (int i in Enum.GetValues(typeof(Genero)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Genero), i));
+            }
 
-    Console.WriteLine("\nDigite o Ano de lançamento da série: ");
-    int entradaAno = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nDigite o gênero entre as opções acima: ");
+            int entradaGenero = int.Parse(Console.ReadLine());
 
-    Console.WriteLine("\nDigite a descrição da série: ");
-    string entradaDescricao = Console.ReadLine();
+            Console.WriteLine("\nDigite o título da série: ");
+            string entradaTitulo = Console.ReadLine();
 
-    Serie novaSerie = new Serie(repositorio.ProximoId(), (Genero)entradaGenero, entradaTitulo, entradaDescricao, entradaAno);
-    repositorio.Atualizar(entradaId, novaSerie);
+            Console.WriteLine("\nDigite o Ano de lançamento da série: ");
+            int entradaAno = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nDigite a descrição da série: ");
+            string entradaDescricao = Console.ReadLine();
+
+            Serie novaSerie = new Serie(repositorio.ProximoId(), (Genero)entradaGenero, entradaTitulo, entradaDescricao, entradaAno);
+            repositorio.Atualizar(int.Parse(entradaId), novaSerie);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nSérie não encontrada.\n");
+            Console.ResetColor();
+        }
+        catch (FormatException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nValor inválido.\n");
+            Console.ResetColor();
+        }
+        catch (Exception e)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(e);
+            Console.ResetColor();
+        }
+    } while (isLoopingAS);
+
 }
 void ExcluirSerie()
 {
@@ -133,7 +162,7 @@ void ExcluirSerie()
         catch (FormatException)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\nID inválido.\n");
+            Console.WriteLine("\nValor inválido.\n");
             Console.ResetColor();
         }
         catch (Exception e)
@@ -182,7 +211,7 @@ void VisualizarSerie()
         catch (FormatException)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\nID inválido.\n");
+            Console.WriteLine("\nValor inválido.\n");
             Console.ResetColor();
         }
         catch (Exception e)
