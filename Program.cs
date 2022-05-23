@@ -52,27 +52,56 @@ void ListarSerie()
 }
 void InserirSerie()
 {
-    Console.WriteLine("--------| INSERIR NOVA SÉRIE |--------");
-
-    foreach (int i in Enum.GetValues(typeof(Genero)))
+    bool isLoopingIS = true;
+    do
     {
-        Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Genero), i));
-    }
+        try
+        {
+            Console.WriteLine("--------| INSERIR NOVA SÉRIE |--------");
+            Console.WriteLine("\nDigite 'x' para sair.\n");
+            foreach (int i in Enum.GetValues(typeof(Genero)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Genero), i));
+            }
 
-    Console.WriteLine("\nDigite o gênero entre as opções acima: ");
-    int entradaGenero = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nDigite o gênero entre as opções acima: ");
+            string entradaGenero = Console.ReadLine();
 
-    Console.WriteLine("\nDigite o título da série: ");
-    string entradaTitulo = Console.ReadLine();
+            if (entradaGenero == "x") { isLoopingIS = false; return; }
 
-    Console.WriteLine("\nDigite o Ano de lançamento da série: ");
-    int entradaAno = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nDigite o título da série: ");
+            string entradaTitulo = Console.ReadLine();
 
-    Console.WriteLine("\nDigite a descrição da série: ");
-    string entradaDescricao = Console.ReadLine();
+            Console.WriteLine("\nDigite o Ano de lançamento da série: ");
+            int entradaAno = int.Parse(Console.ReadLine());
 
-    Serie novaSerie = new Serie(repositorio.ProximoId(), (Genero)entradaGenero, entradaTitulo, entradaDescricao, entradaAno);
-    repositorio.Inserir(novaSerie);
+            Console.WriteLine("\nDigite a descrição da série: ");
+            string entradaDescricao = Console.ReadLine();
+
+            Serie novaSerie = new Serie(repositorio.ProximoId(), (Genero)int.Parse(entradaGenero), entradaTitulo, entradaDescricao, entradaAno);
+            repositorio.Inserir(novaSerie);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nSérie não encontrada.\n");
+            Console.ResetColor();
+        }
+        catch (FormatException)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nValor inválido.\n");
+            Console.ResetColor();
+        }
+        catch (Exception e)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(e);
+            Console.ResetColor();
+        }
+    } while (isLoopingIS);
+
+
 
 }
 void AtualizarSerie()
